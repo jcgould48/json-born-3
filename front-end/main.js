@@ -42,11 +42,11 @@ const postUser = (parameters) => {
 
 const xhr = new XMLHttpRequest();
 
-xhr.addEventListener('loadend', (event) => {
+xhr.addEventListener('loadend', (id) => {
   console.log(event.target.response);
 })
 
-xhr.open('GET', 'http://localhost:3000/users');
+xhr.open('GET', `http://localhost:3000/users[${id}]`);
 xhr.send();
 
 
