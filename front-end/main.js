@@ -1,8 +1,9 @@
-const fs = require('fs')
+// const fs = require('fs')
+const xhr = new XMLHttpRequest();
 
 
 const getUser = (i) => {
-  fs.readFile('./users.json', (error, data) => {
+  xhr.readFile('./users.json', (error, data) => {
     if (error) {
       throw error;
     }
@@ -13,12 +14,10 @@ const getUser = (i) => {
 
 module.exports = getUser;
 
-const fs = require('fs');
-
 
 const postUser = (parameters) => {
   const [name, age, eyeColor] = parameters;
-  fs.readFile('./users.json', (error, data) => {
+  xhr.readFile('./users.json', (error, data) => {
     if (error) {
       throw error;
     }
@@ -32,7 +31,7 @@ const postUser = (parameters) => {
     }
     users.push(newUser);
     const updatedUsers = JSON.stringify(users, null, 2);
-    fs.writeFile('./users.json', updatedUsers, (error) => {
+    xhr.writeFile('./users.json', updatedUsers, (error) => {
       if (error) {
         throw error;
       }
@@ -40,7 +39,6 @@ const postUser = (parameters) => {
   })
 }
 
-const xhr = new XMLHttpRequest();
 
 xhr.addEventListener('loadend', (id) => {
   console.log(event.target.response);
